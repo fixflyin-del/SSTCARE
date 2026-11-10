@@ -1,0 +1,1133 @@
+# SST CARE — COMPLETE BRAND WEBSITE DEVELOPMENT MASTER PROMPT
+
+## PROJECT OBJECTIVE
+
+Transform the existing Fixfly brand website project into a completely professional, premium and modern electronics repair service website under the new brand name **SST CARE**.
+
+This must be a complete website transformation, not a mobile application.
+
+The website must be built using **Next.js (App Router), TypeScript and modern responsive design**, fully compatible with Vercel deployment.
+
+The business specializes exclusively in laptop, MacBook and desktop repair services with convenient doorstep service in Mumbai.
+
+The website must communicate professionalism, technical expertise, customer trust and convenient home or office repair services.
+
+IMPORTANT: Do not include Amazon Store, e-commerce, software products, CRM, unrelated IT services, Android applications, customer accounts or online payment functionality.
+
+The only booking method must be WhatsApp.
+
+---
+
+# 1. BRAND IDENTITY — SST CARE
+
+Brand Name: SST CARE
+
+Website: https://www.sstcare.com
+
+Business Category: Laptop, MacBook, Desktop and Electronics Repair Service.
+
+Tagline: Professional Electronics Repair Service
+
+Use the uploaded SST CARE logo image as the primary brand identity reference.
+
+Logo requirements:
+
+- Preserve the original SST CARE logo design.
+- Maintain the blue and orange brand colour combination.
+- Do not recreate the logo using AI.
+- Do not replace it with generic icons or text-based logos.
+- Use the logo in the header, footer, mobile navigation, loading animation and relevant brand sections.
+- Maintain original proportions and clarity.
+- Create optimized versions for desktop and mobile.
+
+Brand colour palette:
+
+- Primary: Deep Navy Blue.
+- Secondary: Royal Blue.
+- Accent: Orange.
+- Background: White and very light grey.
+- Text: Dark Navy and charcoal.
+
+Overall visual direction:
+
+Create a world-class electronics repair service website with a premium technology-company appearance.
+
+The design should be modern, clean, professional, trustworthy and visually attractive.
+
+Avoid excessive gradients, unnecessary animations, oversized graphics and cluttered layouts.
+
+Use realistic laptop, MacBook, desktop and technician photography. Avoid artificial-looking AI-generated product imagery.
+
+---
+
+# 2. WEBSITE TECHNOLOGY AND ARCHITECTURE
+
+Mandatory technology:
+
+- Next.js with App Router.
+- TypeScript.
+- Tailwind CSS.
+- Server-side rendering where appropriate.
+- Next.js SEO metadata API.
+- Vercel-compatible deployment.
+- Optimized image delivery.
+- Responsive desktop, tablet and mobile layouts.
+
+Technical requirements:
+
+1. Every page must have its own unique URL.
+2. Every blog article must have its own permanent URL.
+3. All public pages must be accessible without customer registration.
+4. No Firebase.
+5. No Firebase Authentication.
+6. No customer login or signup.
+7. No online ordering or checkout system.
+8. No online payment gateway.
+9. No unnecessary external backend dependencies.
+10. Use secure, persistent, Vercel-compatible storage for the admin CMS, reviews, blog content and service pricing.
+11. Never use localStorage as the only permanent database.
+12. Keep all API credentials and sensitive configuration in server-side environment variables.
+13. All important website content must remain manageable without editing source code.
+
+Use an appropriate Vercel-compatible database and image storage solution. Do not introduce Firebase under any circumstances.
+
+---
+
+# 3. WEBSITE LOADING ANIMATION
+
+When visitors first open the website, display a premium SST CARE brand introduction animation.
+
+Animation concept:
+
+- Start with a clean dark navy or black background.
+- Reveal the SST CARE logo using a smooth animation.
+- Animate the logo's blue and orange elements subtly.
+- Display the tagline: Professional Electronics Repair Service.
+- Use a smooth fade and scale transition.
+- Transition naturally into the homepage.
+
+Requirements:
+
+- Keep the animation short, approximately 1.5–2 seconds.
+- Avoid unnecessary loading delays.
+- Do not repeat the full animation on every page navigation.
+- Respect reduced-motion accessibility settings.
+- Ensure the animation does not negatively affect website performance.
+
+---
+
+# 4. WEBSITE HEADER AND NAVIGATION
+
+## Desktop Header
+
+Create a premium sticky navigation header.
+
+The desktop header must contain ONLY:
+
+1. Home
+2. Services
+3. Blog
+4. About Us
+5. WhatsApp Button
+
+Place the SST CARE logo on the left.
+
+Place the main navigation in the centre or right.
+
+WhatsApp button should be clearly visible in orange or green, with a professional appearance.
+
+Do not add unnecessary menu items.
+
+## Mobile and Tablet Navigation
+
+Mobile and tablet users must have:
+
+- A clean top header with the SST CARE logo.
+- A functional slide-out side navigation menu.
+- A hamburger menu.
+- A fixed bottom navigation bar.
+
+Mobile bottom navigation should contain:
+
+1. Home
+2. Services
+3. Blog
+4. About
+5. WhatsApp
+
+Use attractive, consistent icons and clear labels.
+
+The side menu should contain all important website pages, service links, contact information and legal pages.
+
+Ensure the bottom navigation does not cover important page content or WhatsApp buttons.
+
+---
+
+# 5. HOMEPAGE DESIGN
+
+Create an attractive, conversion-focused homepage.
+
+## Section 1: Hero Section
+
+Main heading:
+
+Laptop, MacBook & Desktop Repair at Your Doorstep in Mumbai
+
+Supporting text:
+
+Professional laptop repair, MacBook service and desktop repair at your home or office. Get expert technical assistance with convenient doorstep service from SST CARE.
+
+Primary CTA:
+
+Book a Repair on WhatsApp
+
+Secondary CTA:
+
+Explore Our Services
+
+Add attractive trust indicators:
+
+- Professional Repair Service
+- Convenient Doorstep Service
+- Laptop & MacBook Experts
+- Easy WhatsApp Booking
+
+Use a professional hero visual showing a technician repairing a laptop or servicing a MacBook.
+
+The design must be premium and immediately communicate trust.
+
+## Section 2: Genuine Customer Reviews
+
+This section MUST appear immediately below the hero section.
+
+Display genuine customer reviews from the SST CARE Google Business Profile.
+
+Google Business Profile:
+
+https://maps.app.goo.gl/RgC4ZUFohx93mFne8
+
+Review card requirements:
+
+- Actual reviewer name.
+- Actual Google star rating.
+- Original review text.
+- Review date, when available.
+- Google attribution.
+- Link to the original Google profile.
+
+Create a premium horizontal review carousel.
+
+Desktop: Approximately three review cards visible.
+
+Mobile: Swipeable review cards.
+
+Add two buttons:
+
+- Read All Google Reviews
+- Write a Google Review
+
+Both must link to the appropriate Google destination.
+
+IMPORTANT:
+
+- Never create fake customer reviews.
+- Never use AI-generated testimonials.
+- Never invent review counts or ratings.
+- Retrieve genuine reviews only through authorized Google integration or another permitted source.
+- If an authorized integration is unavailable, display an attractive Google Reviews section with a direct profile link rather than fabricated review content.
+- Allow the administrator to add genuine customer reviews manually after verifying their authenticity.
+
+## Section 3: Why Choose SST CARE?
+
+Create an attractive trust-building section.
+
+Suggested benefits:
+
+- Convenient Doorstep Service
+- Professional Technicians
+- Laptop and MacBook Expertise
+- Transparent Service Pricing
+- Convenient WhatsApp Booking
+- Home and Office Service
+
+Use professional icons and concise descriptions.
+
+Do not make unsupported claims about certifications, partnerships or years of experience.
+
+## Section 4: Our Services
+
+Display all SST CARE services in premium service cards.
+
+The following services are the ONLY services to be displayed.
+
+### Service 1: Laptop Repair at Doorstep
+
+Professional laptop troubleshooting and repair at your home or office.
+
+### Service 2: MacBook Repair
+
+Professional MacBook troubleshooting, servicing and repair assistance.
+
+### Service 3: Laptop Deep Cleaning
+
+Internal dust removal, fan cleaning and professional laptop maintenance.
+
+### Service 4: All-in-One PC Repair
+
+Professional all-in-one computer troubleshooting and repair.
+
+### Service 5: Desktop Computer Repair
+
+Desktop computer diagnosis, troubleshooting and repair.
+
+### Service 6: Gaming Laptop Deep Cleaning
+
+Specialized internal cleaning and maintenance for gaming laptops.
+
+### Service 7: Software Installation
+
+Professional installation and setup of supported computer software.
+
+### Service 8: MS Office Installation
+
+Microsoft Office installation, setup and activation assistance where properly licensed.
+
+### Service 9: Windows Installation
+
+Windows installation, reinstallation, configuration and driver setup.
+
+Each service card must include:
+
+- Professional service image.
+- Service name.
+- Short description.
+- Starting price, if configured by the administrator.
+- View Details button.
+- Book on WhatsApp button.
+
+All service prices must be dynamically loaded from the admin CMS.
+
+Do not hardcode prices throughout the website.
+
+If a price is not configured, display:
+
+Contact for Pricing
+
+Do not invent prices.
+
+## Section 5: How Our Doorstep Service Works
+
+Create a simple four-step visual process:
+
+1. Choose Your Service.
+2. Contact SST CARE on WhatsApp.
+3. Confirm Your Service Visit.
+4. Get Your Device Serviced.
+
+Make the process easy to understand.
+
+## Section 6: Supported Devices
+
+Display professional product imagery of:
+
+- Windows Laptops.
+- Apple MacBook.
+- Desktop Computers.
+- All-in-One Computers.
+- Gaming Laptops.
+
+Use realistic photography and a consistent visual style.
+
+## Section 7: Service Area
+
+Main service location:
+
+Mumbai, Maharashtra, India.
+
+Clearly communicate doorstep repair availability in Mumbai.
+
+The administrator should be able to update the service areas from the admin panel.
+
+Do not claim service availability in areas that have not been confirmed.
+
+## Section 8: Frequently Asked Questions
+
+Add useful FAQs:
+
+- Does SST CARE provide doorstep laptop repair?
+- Do you repair Apple MacBook devices?
+- Do you provide desktop repair at home?
+- Can I book a technician through WhatsApp?
+- Do you provide gaming laptop deep cleaning?
+- What is the cost of laptop repair?
+- Do you provide Windows installation?
+- Do you provide MS Office installation?
+- How can I check service availability in my location?
+- Can I enquire about service charges before booking?
+
+Answers must be informative, concise and accurate.
+
+## Section 9: Final WhatsApp CTA
+
+Heading:
+
+Need Professional Laptop Repair?
+
+Supporting text:
+
+Get convenient doorstep repair assistance for your laptop, MacBook or desktop. Contact SST CARE today.
+
+Button:
+
+Chat with SST CARE on WhatsApp
+
+---
+
+# 6. INDIVIDUAL SERVICE PAGES
+
+Every service must have its own dedicated page with a separate permanent URL.
+
+Required URLs:
+
+/services
+
+/services/laptop-repair
+
+/services/macbook-repair
+
+/services/laptop-deep-cleaning
+
+/services/all-in-one-pc-repair
+
+/services/desktop-repair
+
+/services/gaming-laptop-deep-cleaning
+
+/services/software-installation
+
+/services/ms-office-installation
+
+/services/windows-installation
+
+Each page must have:
+
+1. Unique SEO title.
+2. Unique meta description.
+3. Professional service hero section.
+4. Detailed service information.
+5. Common problems addressed.
+6. Service benefits.
+7. Relevant FAQs.
+8. Dynamic service pricing.
+9. WhatsApp booking CTA.
+10. Related service links.
+11. Breadcrumb navigation.
+12. Relevant structured data.
+
+Every service page must have genuinely useful, original content.
+
+Do not duplicate the same text across all service pages.
+
+---
+
+# 7. WHATSAPP BOOKING SYSTEM
+
+The entire booking system must work through WhatsApp only.
+
+WhatsApp and calling number:
+
++91 79 7795 4302
+
+WhatsApp link:
+
+https://wa.me/917977954302
+
+All WhatsApp buttons throughout the website must open the correct WhatsApp conversation.
+
+Use dynamic pre-filled messages.
+
+Example:
+
+Hello SST CARE, I want to enquire about Laptop Repair at Doorstep.
+
+Service: [Selected Service]
+
+Price: [Configured Price]
+
+Location: [Optional Customer Location]
+
+Please share the details.
+
+Requirements:
+
+- Every service page must generate the correct service-specific message.
+- Every service card must have a working WhatsApp button.
+- Header WhatsApp button must work.
+- Footer WhatsApp button must work.
+- Mobile bottom WhatsApp navigation must work.
+- No internal online booking form is required.
+- No online payment.
+- No customer account.
+
+Also add a clickable telephone link:
+
+tel:+917977954302
+
+---
+
+# 8. COMPLETE BLOG SYSTEM AND WORDPRESS MIGRATION
+
+This is one of the most important requirements.
+
+The existing SST CARE website may receive an exported WordPress blog file from the owner.
+
+The owner will provide the WordPress export file separately.
+
+You must support importing the existing WordPress blog content into the new Next.js website.
+
+## WordPress Migration Requirements
+
+Import all available content from the supplied WordPress export file, including:
+
+- Blog titles.
+- Full article content.
+- Original publication dates.
+- Updated dates, where available.
+- Original URL slugs.
+- Categories.
+- Tags.
+- Featured images.
+- Article images.
+- Image captions.
+- Author information.
+- Existing SEO titles.
+- Meta descriptions, if available.
+- Canonical URLs, if available.
+- Relevant internal links.
+
+MOST IMPORTANT: Preserve the existing WordPress article URLs exactly wherever possible.
+
+Example:
+
+If the original WordPress article URL is:
+
+https://www.sstcare.com/old-blog-url/
+
+The migrated article must remain accessible at:
+
+https://www.sstcare.com/old-blog-url/
+
+Do not unnecessarily change the URL structure.
+
+If an exact URL cannot be preserved, implement a proper permanent 301 redirect from the original URL to the new URL.
+
+Preserve existing SEO metadata and canonical URLs wherever valid.
+
+Do not delete, overwrite or discard existing WordPress content during migration.
+
+Create a migration verification report containing:
+
+- Original article URL.
+- New article URL.
+- Redirect status, if applicable.
+- Article migration status.
+- SEO metadata migration status.
+- Image migration status.
+
+Verify that old indexed URLs do not return 404 errors.
+
+The migration must be completed only after the owner provides the WordPress export file.
+
+## Public Blog Pages
+
+Required routes:
+
+/blog
+
+/blog/[slug]
+
+/blog/category/[category]
+
+/blog/tag/[tag]
+
+Every article must have its own independent URL.
+
+Blog homepage must contain:
+
+- Featured articles.
+- Recent articles.
+- Blog categories.
+- Search functionality.
+- Pagination.
+- Attractive article cards.
+- Featured images.
+- Publication dates.
+- Article excerpts.
+
+Individual article pages must include:
+
+- Full article content.
+- Featured image.
+- Author information.
+- Publication date.
+- Updated date.
+- Social sharing.
+- Related articles.
+- Breadcrumb navigation.
+- Related service links.
+- WhatsApp booking CTA.
+
+Create a clean, premium editorial layout.
+
+---
+
+# 9. ADMIN PANEL
+
+Create a dedicated SST CARE administration panel accessible through:
+
+https://www.sstcare.com/admin
+
+IMPORTANT:
+
+No customer login or registration system should exist.
+
+The admin panel is exclusively for authorized website administrators.
+
+Since the website must not have public customer accounts, implement a minimal secure admin-only access mechanism. Use server-side authentication and secure sessions. Do not expose administrative functionality to public visitors.
+
+Admin panel must be functional, not just a visual dashboard.
+
+## Admin Dashboard
+
+Show:
+
+- Total published blogs.
+- Total draft blogs.
+- Total customer reviews.
+- Total active services.
+- Quick actions.
+
+## A. Blog Management
+
+Admin must be able to:
+
+- Add new blog articles.
+- Edit existing articles.
+- Delete articles after confirmation.
+- Save drafts.
+- Publish articles.
+- Unpublish articles.
+- Upload featured images.
+- Upload images within articles.
+- Add categories.
+- Add tags.
+- Edit article slugs.
+- Set SEO titles.
+- Set meta descriptions.
+- Set canonical URLs.
+- Add image alt text.
+- Set publication dates.
+- Add author details.
+- Preview articles.
+- Manage related articles.
+
+Use an easy-to-use rich text editor.
+
+The administrator must be able to create and publish a complete article without writing code.
+
+## B. Customer Review Management
+
+Create an admin section:
+
+/admin/reviews
+
+Admin must be able to:
+
+- Add genuine customer reviews.
+- Edit reviews.
+- Delete reviews.
+- Set customer name.
+- Set star rating.
+- Add original review text.
+- Set review date.
+- Add Google review source URL.
+- Mark reviews as verified.
+- Publish or unpublish reviews.
+- Choose which reviews appear on the homepage.
+
+Never automatically mark unverified reviews as genuine.
+
+## C. Service and Pricing Management
+
+Create an admin section:
+
+/admin/services
+
+Admin must be able to:
+
+- Edit service names.
+- Edit service descriptions.
+- Change service prices.
+- Change starting prices.
+- Update service images.
+- Enable or disable individual services.
+- Edit service page content.
+- Change WhatsApp booking messages.
+- Update service availability.
+
+Any price change must automatically reflect on:
+
+- Homepage service cards.
+- Individual service pages.
+- Service listing page.
+- WhatsApp pre-filled messages.
+
+Do not require code changes to update service prices.
+
+## D. General Website Settings
+
+Create an admin settings section to manage:
+
+- Business phone number.
+- WhatsApp number.
+- Business email, when provided.
+- Website logo.
+- Google Business Profile URL.
+- Service locations.
+- Social media links.
+- Homepage SEO title.
+- Homepage meta description.
+- Footer information.
+
+All admin APIs must be protected server-side.
+
+---
+
+# 10. ABOUT US PAGE
+
+Dedicated URL:
+
+/about-us
+
+Create a professional About SST CARE page.
+
+Suggested heading:
+
+Your Trusted Partner for Professional Electronics Repair
+
+Explain:
+
+SST CARE provides professional laptop, MacBook and desktop repair services with a focus on convenient doorstep assistance.
+
+The company aims to make technical repair services easier and more accessible for customers in Mumbai.
+
+Include:
+
+- Brand introduction.
+- Service philosophy.
+- Professional approach.
+- Doorstep service concept.
+- Customer convenience.
+- WhatsApp contact CTA.
+
+Do not invent company history, registration information, certifications, partnerships or technician qualifications.
+
+---
+
+# 11. CONTACT US PAGE
+
+Dedicated URL:
+
+/contact-us
+
+Display:
+
+Brand: SST CARE
+
+Website: https://www.sstcare.com
+
+Phone: +91 79 7795 4302
+
+WhatsApp: +91 79 7795 4302
+
+Google Business Profile:
+
+https://maps.app.goo.gl/RgC4ZUFohx93mFne8
+
+Include:
+
+- Click-to-call button.
+- WhatsApp button.
+- Google Business Profile button.
+- Google Maps location/embed if available.
+- Service availability information.
+
+Do not invent a physical office address.
+
+---
+
+# 12. FOOTER — COMPLETE WEBSITE FOOTER
+
+Create a premium, comprehensive footer.
+
+The footer must appear on every public page.
+
+Include the following sections:
+
+## Brand Section
+
+SST CARE logo.
+
+Professional Electronics Repair Service.
+
+Short brand description.
+
+## Quick Links
+
+- Home.
+- About Us.
+- Services.
+- Blog.
+- Contact Us.
+
+## Our Services
+
+- Laptop Repair.
+- MacBook Repair.
+- Laptop Deep Cleaning.
+- All-in-One PC Repair.
+- Desktop Repair.
+- Gaming Laptop Deep Cleaning.
+- Software Installation.
+- MS Office Installation.
+- Windows Installation.
+
+Every service must link to its respective page.
+
+## Contact Information
+
+Phone: +91 79 7795 4302
+
+WhatsApp: +91 79 7795 4302
+
+Website: www.sstcare.com
+
+Google Business Profile link.
+
+## Legal Pages
+
+- Privacy Policy.
+- Terms & Conditions.
+- Disclaimer.
+- Cancellation and Service Policy.
+
+Create separate pages for all legal policies.
+
+## Social Media
+
+Display social media links only when actual official URLs are supplied.
+
+Do not create fake social media links.
+
+## Copyright
+
+© 2026 SST CARE. All Rights Reserved.
+
+Do not include Amazon Store, software products, developer tools, unrelated business links or unnecessary promotional sections.
+
+---
+
+# 13. GOOGLE SEO AND LOCAL SEO
+
+Implement comprehensive technical and on-page SEO.
+
+Primary keywords:
+
+- Laptop repair in Mumbai.
+- Laptop repair service in Mumbai.
+- Laptop repair at home in Mumbai.
+- Doorstep laptop repair Mumbai.
+- MacBook repair in Mumbai.
+- MacBook service in Mumbai.
+- Desktop repair in Mumbai.
+- Computer repair service Mumbai.
+- Laptop deep cleaning service Mumbai.
+- Gaming laptop deep cleaning Mumbai.
+- All in one PC repair Mumbai.
+- Laptop technician at home Mumbai.
+- Windows installation service Mumbai.
+- MS Office installation service Mumbai.
+- Laptop software installation Mumbai.
+
+Naturally integrate relevant keywords into:
+
+- Page titles.
+- Meta descriptions.
+- Main headings.
+- Subheadings.
+- Service descriptions.
+- Blog articles.
+- Image alt text.
+- Internal links.
+- FAQs.
+
+Do not keyword-stuff.
+
+## Individual Page SEO
+
+Every public page must have:
+
+- Unique SEO title.
+- Unique meta description.
+- One primary H1 heading.
+- Proper H2 and H3 hierarchy.
+- Canonical URL.
+- Open Graph metadata.
+- Social sharing metadata.
+- Relevant internal links.
+- Optimized images.
+- Descriptive alt text.
+
+## Technical SEO
+
+Implement:
+
+- Server-rendered indexable pages.
+- XML sitemap at /sitemap.xml.
+- robots.txt at /robots.txt.
+- HTTPS.
+- Canonical URLs.
+- Clean URLs.
+- Mobile-first responsive design.
+- Fast page loading.
+- Optimized WebP/AVIF images.
+- Correct 301 redirects.
+- Custom 404 page.
+- No broken internal links.
+- Google Search Console compatibility.
+- Google Analytics 4 support, if configured.
+
+The sitemap must include all indexable service pages, blog articles, categories and legal pages where appropriate.
+
+Exclude:
+
+- /admin
+- Admin APIs.
+- Draft blogs.
+- Private content.
+- Unpublished articles.
+
+## Structured Data
+
+Implement appropriate structured data:
+
+- Organization.
+- LocalBusiness or suitable subtype.
+- WebSite.
+- WebPage.
+- Service.
+- BlogPosting.
+- BreadcrumbList.
+
+Use actual verified business information.
+
+Do not invent ratings, review counts, business addresses or certifications.
+
+Do not use fake aggregate review schema.
+
+---
+
+# 14. INDIVIDUAL PAGE URL STRUCTURE
+
+All pages must have separate URLs.
+
+Required public website structure:
+
+/
+
+/services
+
+/services/laptop-repair
+
+/services/macbook-repair
+
+/services/laptop-deep-cleaning
+
+/services/all-in-one-pc-repair
+
+/services/desktop-repair
+
+/services/gaming-laptop-deep-cleaning
+
+/services/software-installation
+
+/services/ms-office-installation
+
+/services/windows-installation
+
+/about-us
+
+/contact-us
+
+/blog
+
+/blog/[slug]
+
+/blog/category/[category]
+
+/blog/tag/[tag]
+
+/privacy-policy
+
+/terms-and-conditions
+
+/disclaimer
+
+/service-policy
+
+/admin
+
+/admin/blog
+
+/admin/reviews
+
+/admin/services
+
+/admin/settings
+
+Every page must load independently when its URL is opened directly.
+
+Do not create a single-page website where all sections share the same URL.
+
+---
+
+# 15. PERFORMANCE AND USER EXPERIENCE
+
+The website must be exceptionally responsive and fast.
+
+Requirements:
+
+- Mobile-first design.
+- Desktop optimization.
+- Tablet optimization.
+- Fast page transitions.
+- Lightweight animations.
+- Optimized image loading.
+- Lazy loading where appropriate.
+- Accessible colour contrast.
+- Readable typography.
+- Proper button sizes.
+- Smooth mobile navigation.
+- No horizontal overflow.
+- No broken images.
+- No layout shifts.
+- Functional navigation on all devices.
+
+The mobile website must feel like a premium professional service website, not an app.
+
+---
+
+# 16. STRICTLY PROHIBITED FEATURES
+
+Do not add any of the following:
+
+- Fixfly branding.
+- Fixfly logo.
+- Amazon Store.
+- E-commerce store.
+- Product shopping.
+- Cart.
+- Checkout.
+- Online ordering.
+- Online payment.
+- Customer login.
+- Customer registration.
+- Firebase.
+- Firebase Authentication.
+- Android application.
+- iOS application.
+- CRM.
+- Unrelated IT services.
+- Laptop accessories shopping.
+- Software product marketplace.
+- Unrelated promotional banners.
+- Fake customer testimonials.
+- Fake Google ratings.
+- Fake certifications.
+- Fake authorized partnerships.
+- Unverified office addresses.
+
+The entire website must focus exclusively on SST CARE laptop, MacBook and desktop repair services.
+
+---
+
+# 17. FINAL TESTING AND DELIVERY REQUIREMENTS
+
+Do not stop after creating a homepage design.
+
+Build the complete working website.
+
+Before delivery, test the following:
+
+1. SST CARE branding appears correctly throughout the website.
+2. The original SST CARE logo is used.
+3. Website loading animation works.
+4. Desktop navigation works.
+5. Mobile side navigation works.
+6. Mobile bottom navigation works.
+7. Homepage displays genuine Google reviews or an appropriate Google review link.
+8. All nine service pages have separate URLs.
+9. All service prices are dynamically managed.
+10. WhatsApp buttons open the correct number.
+11. Calling buttons work.
+12. Every blog article has its own URL.
+13. Admin can add and edit blogs.
+14. Admin can add and manage genuine reviews.
+15. Admin can change service prices.
+16. Admin access is protected.
+17. Customer login does not exist.
+18. WordPress XML import functionality is ready.
+19. Existing WordPress URLs are preserved during migration.
+20. 301 redirects work wherever required.
+21. Existing SEO metadata is preserved where available.
+22. Sitemap and robots.txt work correctly.
+23. Admin pages and drafts are not indexed.
+24. All footer links work.
+25. All legal pages exist.
+26. Website works on desktop, tablet and mobile.
+27. Website deploys successfully on Vercel.
+28. No Firebase dependencies exist.
+29. No broken links or nonfunctional buttons exist.
+30. No fake reviews or unsupported business claims exist.
+
+## FINAL DEVELOPMENT INSTRUCTIONS
+
+First inspect the existing project and its architecture.
+
+Then transform the existing website into SST CARE.
+
+Do not blindly replace code or destroy reusable working components.
+
+Preserve reusable functionality where appropriate, but remove all Fixfly-specific branding, content, integrations and unnecessary features.
+
+Build the website as a proper multi-page Next.js project.
+
+Use clean, maintainable and production-ready code.
+
+Do not create only a frontend mockup. Admin functionality, blog management, review management, dynamic pricing, WhatsApp links, SEO routes and persistent data storage must actually work.
+
+The WordPress export file will be provided separately. Keep the migration process ready and do not claim that old articles have been migrated until the actual export file has been imported and verified.
+
+At completion, provide:
+
+- Complete working Next.js source code.
+- Vercel deployment compatibility.
+- Functional admin panel.
+- Working WhatsApp integration.
+- Working blog CMS.
+- Dynamic service pricing.
+- WordPress migration readiness.
+- SEO implementation.
+- A list of any external credentials or permissions still required.
+
+**FINAL GOAL: Create SST CARE as a premium, modern, professional and SEO-friendly laptop, MacBook and desktop repair service brand in Mumbai, with a powerful website that builds customer trust and generates genuine WhatsApp enquiries.**
