@@ -52,5 +52,31 @@ export const INITIAL_REVIEWS: ReviewItem[] = [
     "displayOnHome": true,
     "location": "Borivali West, Mumbai",
     "deviceRepaired": "Lenovo Legion Gaming Laptop"
+  },
+  {
+    "id": "rev-5",
+    "authorName": "Sameer Ansari",
+    "rating": 5,
+    "text": "Replaced my swollen MacBook Air battery at my Kurla residence in under 50 minutes. The technician arrived on time with proper suction and solvent tools, removed the old glued cells safely, and calibrated the new battery. Super smooth experience!",
+    "date": "2026-10-29",
+    "sourceUrl": "https://maps.app.goo.gl/RgC4ZUFohx93mFne8",
+    "isVerified": true,
+    "isPublished": true,
+    "displayOnHome": true,
+    "location": "Kurla West, Mumbai",
+    "deviceRepaired": "MacBook Air Battery Replacement"
+  },
+  {
+    "id": "rev-6",
+    "authorName": "Neha Deshmukh",
+    "rating": 5,
+    "text": "Fitted a brand new 15.6-inch FHD IPS panel for my HP Pavilion laptop right at my Chembur apartment. No dead pixels, perfect color accuracy, and crystal clear billing. Doorstep visit saved me an entire day traveling to Lamington Road.",
+    "date": "2026-11-02",
+    "sourceUrl": "https://maps.app.goo.gl/RgC4ZUFohx93mFne8",
+    "isVerified": true,
+    "isPublished": true,
+    "displayOnHome": true,
+    "location": "Chembur East, Mumbai",
+    "deviceRepaired": "Laptop Screen Replacement"
   }
 ];

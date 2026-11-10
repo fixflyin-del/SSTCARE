@@ -8,7 +8,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     "shortDescription": "Professional laptop troubleshooting, screen replacement, hinge repair, and motherboard servicing at your home or office.",
     "fullDescription": "SST CARE offers comprehensive on-site laptop repair across Mumbai. Whether your laptop won't turn on, is suffering from sudden restarts, broken display panels, malfunctioning keyboards, or loose hinges, our experienced technician arrives at your doorstep equipped with precision diagnostic instruments and replacement spares to test and restore your device with full transparency.",
     "startingPrice": "₹499",
-    "image": "/images/hero-technician.jpg",
+    "image": "/images/battery-screen-repair.jpg",
     "active": true,
     "commonProblems": [
       "Laptop not powering on or dead battery charging circuit",
@@ -126,7 +126,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     "shortDescription": "Professional all-in-one computer troubleshooting, SSD upgrades, power supply repair and display servicing.",
     "fullDescription": "All-in-One (AIO) computers from HP, Dell, Lenovo, and Asus pack complete desktop hardware into the display chassis. Transporting heavy, fragile AIO screens to a repair market is risky. SST CARE eliminates this hassle by servicing your All-in-One computer right on your desk.",
     "startingPrice": "₹799",
-    "image": "/images/desktop-pc.jpg",
+    "image": "/images/aio-desktop-service.jpg",
     "active": true,
     "commonProblems": [
       "All-in-One PC turns on with black screen or power LED blinking",
@@ -228,7 +228,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     "shortDescription": "Professional installation and setup of supported computer software, utility drivers, and system tools.",
     "fullDescription": "Need essential workstation software properly set up without conflicting background processes or malware? SST CARE assists individuals, freelance professionals, and businesses across Mumbai with professional installation, configuration, and driver tuning for laptops and desktops.",
     "startingPrice": "₹399",
-    "image": "/images/hero-technician.jpg",
+    "image": "/images/software-os-setup.jpg",
     "active": true,
     "commonProblems": [
       "Software installer throwing error codes or dependency missing alerts",
@@ -260,7 +260,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     "shortDescription": "Microsoft Office installation, setup, Outlook configuration, and activation assistance where properly licensed.",
     "fullDescription": "Get Word, Excel, PowerPoint, Outlook, and OneNote installed and running smoothly on your Windows PC or Apple MacBook. SST CARE ensures proper account linking, clean installation, Outlook mailbox synchronization (IMAP/Exchange), and seamless file association.",
     "startingPrice": "₹399",
-    "image": "/images/hero-technician.jpg",
+    "image": "/images/software-os-setup.jpg",
     "active": true,
     "commonProblems": [
       "Microsoft Office throwing 'Product Unlicensed' or activation prompts",
@@ -292,7 +292,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     "shortDescription": "Windows installation, reinstallation, configuration, SSD partition setup, and driver configuration.",
     "fullDescription": "A fresh Windows installation revitalizes any sluggish computer, removes hidden background bloatware, and gives you a clean slate. SST CARE provides doorstep Windows 11 and Windows 10 installation with proper GPT/UEFI partition alignment, genuine driver integration, and safe personal data preservation.",
     "startingPrice": "₹499",
-    "image": "/images/hero-technician.jpg",
+    "image": "/images/software-os-setup.jpg",
     "active": true,
     "commonProblems": [
       "Windows failing to boot with 'Automatic Repair Couldn't Repair Your PC'",

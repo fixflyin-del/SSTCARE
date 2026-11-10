@@ -195,14 +195,6 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
           <div className="flex items-center gap-4 text-slate-400">
             <span>© 2026 SST CARE. All Rights Reserved.</span>
-            <button
-              onClick={() => handleLinkClick('/admin')}
-              className="text-slate-400 hover:text-slate-200 transition-colors inline-flex items-center gap-1 p-1"
-              title="SST CARE Administrator Login"
-            >
-              <Lock className="w-3 h-3" />
-              <span>Admin</span>
-            </button>
           </div>
         </div>
       </div>

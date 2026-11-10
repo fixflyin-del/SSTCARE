@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
+import { DirectCallFloatingButton } from './components/DirectCallFloatingButton';
 import { LoadingAnimation } from './components/LoadingAnimation';
 import { HomeView } from './views/HomeView';
 import { ServicesListView } from './views/ServicesListView';
@@ -376,6 +377,9 @@ export default function App() {
       <main className="flex-1">
         {renderCurrentView()}
       </main>
+
+      {/* Persistent Direct Call Floating Button (Right side, whole website) */}
+      {!isAdminRoute && <DirectCallFloatingButton />}
 
       {/* Persistent WhatsApp Trigger (Desktop) */}
       {!isAdminRoute && <WhatsAppFloatingButton />}

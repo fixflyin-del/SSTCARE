@@ -28,13 +28,26 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     <>
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8 h-18 sm:h-20">
-            {/* Zone 1: Brand Zone */}
-            <div 
-              onClick={() => handleNavClick('/')}
-              className="cursor-pointer py-1"
-            >
-              <BrandLogo height={44} variant="transparent" showTagline={true} />
+          <div className="flex items-center justify-between gap-4 sm:gap-8 h-18 sm:h-20">
+            {/* Zone 1: Left-side Hamburger Button & Brand Logo */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Mobile Hamburger Toggle on LEFT side of Logo */}
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="inline-flex md:hidden items-center justify-center p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-hidden"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+
+              {/* Brand Logo */}
+              <div 
+                onClick={() => handleNavClick('/')}
+                className="cursor-pointer py-1"
+              >
+                <BrandLogo height={44} variant="transparent" showTagline={true} />
+              </div>
             </div>
 
             {/* Zone 2: Navigation Links (Desktop: Home, Services, Blog, About Us) */}
@@ -58,21 +71,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   </button>
                 );
               })}
-
-              <button
-                onClick={() => handleNavClick('/admin')}
-                className={`relative py-1 px-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  currentPath.startsWith('/admin')
-                    ? 'bg-blue-700 text-white'
-                    : 'text-slate-500 hover:text-blue-700 bg-slate-100/80 hover:bg-slate-200/80'
-                }`}
-                title="Open Admin Console (No Password)"
-              >
-                Admin Panel
-              </button>
             </nav>
 
-            {/* Zone 3: 1 Primary Action (WhatsApp Button) */}
+            {/* Zone 3: Direct Contact Actions */}
             <div className="flex items-center gap-3 shrink-0">
               {/* Optional direct call icon for quick mobile reach */}
               <a
@@ -88,42 +89,33 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 href={getWhatsAppBookingUrl({ customMessage: "Hello SST CARE, I would like to book a doorstep electronics repair visit in Mumbai. Please share details." })}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 rounded-xl shadow-xs transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 rounded-xl shadow-xs transition-all transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
               >
                 <MessageSquare className="w-4 h-4 fill-white/20" />
-                <span>WhatsApp Booking</span>
+                <span className="hidden xs:inline sm:inline">WhatsApp Booking</span>
+                <span className="xs:hidden">WhatsApp</span>
               </a>
-
-              {/* Mobile Hamburger Toggle */}
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="inline-flex md:hidden items-center justify-center p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-hidden"
-                aria-label="Toggle navigation menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Slide-out Mobile & Tablet Drawer Menu from the RIGHT */}
+      {/* Slide-out Mobile & Tablet Drawer Menu from the LEFT */}
       {mobileMenuOpen && (
-        <aside aria-label="Mobile Navigation Drawer" className="fixed inset-0 z-50 md:hidden flex justify-end">
+        <aside aria-label="Mobile Navigation Drawer" className="fixed inset-0 z-50 md:hidden flex justify-start">
           {/* Backdrop */}
           <div 
             className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          {/* Drawer content on RIGHT */}
-          <div className="relative bg-white w-80 max-w-[85vw] h-full overflow-y-auto shadow-2xl p-6 flex flex-col z-10 animate-in slide-in-from-right duration-300">
+          {/* Drawer content on LEFT */}
+          <div className="relative bg-white w-80 max-w-[85vw] h-full overflow-y-auto shadow-2xl p-6 flex flex-col z-10 animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <BrandLogo height={38} variant="transparent" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100"
+                className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 cursor-pointer"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -133,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             <div className="py-4 space-y-1">
               <button
                 onClick={() => handleNavClick('/')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <Home className="w-4 h-4 text-slate-500" />
@@ -144,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               <button
                 onClick={() => handleNavClick('/services')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <Wrench className="w-4 h-4 text-slate-500" />
@@ -155,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               <button
                 onClick={() => handleNavClick('/blog')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <BookOpen className="w-4 h-4 text-slate-500" />
@@ -166,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               <button
                 onClick={() => handleNavClick('/about-us')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <Info className="w-4 h-4 text-slate-500" />
@@ -177,26 +169,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               <button
                 onClick={() => handleNavClick('/contact-us')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-slate-500" />
                   Contact & Location
                 </span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
-              </button>
-
-              <button
-                onClick={() => handleNavClick('/admin')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50/80 hover:bg-blue-100/80 border border-blue-200/60"
-              >
-                <span className="flex items-center gap-3">
-                  <Wrench className="w-4 h-4 text-blue-700" />
-                  Admin Console (Open Access)
-                </span>
-                <span className="text-[10px] uppercase font-extrabold bg-blue-600 text-white px-2 py-0.5 rounded-full">
-                  Admin
-                </span>
               </button>
             </div>
 
