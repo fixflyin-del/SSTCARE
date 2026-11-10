@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ServiceItem } from '../types';
+import { getServiceImage } from '../data/servicesData';
 import { getWhatsAppBookingUrl } from '../lib/whatsapp';
 import { Wrench, MessageSquare, ChevronRight, Search, ShieldCheck } from 'lucide-react';
 
@@ -72,10 +73,13 @@ export const ServicesListView: React.FC<ServicesListViewProps> = ({ services, na
               <div>
                 <div className="relative h-48 overflow-hidden bg-slate-900">
                   <img
-                    src={s.image || '/images/hero-technician.jpg'}
+                    src={getServiceImage(s)}
                     alt={s.name}
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/images/hero-technician.jpg';
+                    }}
                   />
                   <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-xs text-[11px] font-semibold text-white border border-white/10">
                     {priceDisplay}

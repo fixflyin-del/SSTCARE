@@ -1,5 +1,27 @@
 import { ServiceItem } from '../types';
 
+export const SERVICE_IMAGES: Record<string, string> = {
+  'laptop-repair': '/images/battery-screen-repair.jpg',
+  'macbook-repair': '/images/macbook-repair.jpg',
+  'laptop-deep-cleaning': '/images/laptop-cleaning.jpg',
+  'all-in-one-pc-repair': '/images/aio-desktop-service.jpg',
+  'desktop-repair': '/images/desktop-pc.jpg',
+  'gaming-laptop-deep-cleaning': '/images/gaming-laptop.jpg',
+  'software-installation': '/images/software-os-setup.jpg',
+  'ms-office-installation': '/images/software-os-setup.jpg',
+  'windows-installation': '/images/software-os-setup.jpg'
+};
+
+export function getServiceImage(service: { id?: string; slug?: string; image?: string }): string {
+  if (service.id && SERVICE_IMAGES[service.id]) {
+    return SERVICE_IMAGES[service.id];
+  }
+  if (service.slug && SERVICE_IMAGES[service.slug]) {
+    return SERVICE_IMAGES[service.slug];
+  }
+  return service.image || '/images/hero-technician.jpg';
+}
+
 export const INITIAL_SERVICES: ServiceItem[] = [
   {
     "id": "laptop-repair",

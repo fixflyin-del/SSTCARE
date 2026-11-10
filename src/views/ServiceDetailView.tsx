@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ServiceItem } from '../types';
+import { getServiceImage } from '../data/servicesData';
 import { getWhatsAppBookingUrl, SST_PHONE_CALL_LINK, SST_PHONE_DISPLAY } from '../lib/whatsapp';
 import { 
   ShieldCheck, 
@@ -136,10 +137,13 @@ export const ServiceDetailView: React.FC<ServiceDetailViewProps> = ({ service, a
         <div className="lg:col-span-5">
           <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg relative bg-slate-900 group">
             <img
-              src={service.image || '/images/hero-technician.jpg'}
+              src={getServiceImage(service)}
               alt={service.name}
               className="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-102 transition-transform duration-500"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/images/hero-technician.jpg';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white text-xs">

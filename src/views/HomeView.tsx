@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ServiceItem, ReviewItem, SiteSettings } from '../types';
 import { getWhatsAppBookingUrl, SST_GOOGLE_MAPS_URL } from '../lib/whatsapp';
+import { getServiceImage } from '../data/servicesData';
 
 interface HomeViewProps {
   services: ServiceItem[];
@@ -188,108 +189,133 @@ export const HomeView: React.FC<HomeViewProps> = ({ services, reviews, settings,
       </section>
 
       {/* ---------------------------------------------------------- */}
-      {/* SECTION 2: GENUINE CUSTOMER REVIEWS (Immediately below Hero)*/}
+      {/* SECTION 2: GENUINE CUSTOMER REVIEWS (HORIZONTAL SCROLL)    */}
       {/* ---------------------------------------------------------- */}
       <section className="bg-slate-100/80 py-12 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-blue-800 mb-2">
-                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                <span>Verified Google Business Reviews</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold mb-2">
+                <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                <span>4.9 / 5.0 Star Rated on Google</span>
+                <span className="text-amber-300">·</span>
+                <span>Verified Mumbai Visits</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b192c]">
                 Genuine Customer Feedback
               </h2>
               <p className="text-sm text-slate-600 mt-1 max-w-xl">
-                Read authentic feedback from laptop, MacBook, and desktop owners serviced at their doorstep across Mumbai.
+                Read authentic doorstep repair reviews from laptop, MacBook, and PC owners across Bandra, Andheri, Powai, Kurla, Chembur, and Mumbai.
               </p>
             </div>
 
-            {/* Google Profile Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <a
-                href={SST_GOOGLE_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 text-xs font-semibold shadow-2xs transition-colors flex items-center gap-1.5"
+            {/* Navigation & Action Buttons */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('top-reviews-horizontal-container');
+                  if (el) el.scrollBy({ left: -360, behavior: 'smooth' });
+                }}
+                className="p-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
+                aria-label="Scroll reviews left"
               >
-                <span>Read All Google Reviews</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-              </a>
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById('top-reviews-horizontal-container');
+                  if (el) el.scrollBy({ left: 360, behavior: 'smooth' });
+                }}
+                className="p-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
+                aria-label="Scroll reviews right"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
 
               <a
-                href={SST_GOOGLE_MAPS_URL}
+                href={settings.googleBusinessUrl || SST_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold shadow-2xs transition-colors flex items-center gap-1.5"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold shadow-2xs transition-colors"
               >
-                <span>Write a Google Review</span>
-                <Star className="w-3.5 h-3.5 fill-white/80" />
+                <span>Google Reviews</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
 
-          {/* Review Carousel */}
-          {homeReviews.length > 0 ? (
-            <div className="relative">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {homeReviews.map((rev) => (
-                  <div
-                    key={rev.id}
-                    className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Rating Stars & Google Tag */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <div className="flex items-center gap-0.5">
-                          {[...Array(rev.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                          ))}
-                        </div>
-                        <span className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          Verified
-                        </span>
-                      </div>
-
-                      {/* Review Text */}
-                      <p className="text-sm text-slate-700 leading-relaxed italic">
-                        "{rev.text}"
-                      </p>
+          {/* Horizontal Scroll Track */}
+          <div
+            id="top-reviews-horizontal-container"
+            className="flex gap-5 overflow-x-auto pb-4 pt-2 scroll-smooth snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+            style={{ scrollbarWidth: 'thin' }}
+          >
+            {homeReviews.map((rev) => (
+              <div
+                key={rev.id}
+                className="w-[300px] sm:w-[360px] md:w-[390px] shrink-0 snap-start bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-3.5">
+                  {/* Rating Stars & Verified Tag */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(rev.rating || 5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
                     </div>
+                    {rev.isVerified && (
+                      <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        Verified
+                      </span>
+                    )}
+                  </div>
 
-                    <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <div>
-                        <p className="font-bold text-slate-900">{rev.authorName}</p>
-                        {rev.location && <p className="text-slate-500">{rev.location}</p>}
-                      </div>
-                      {rev.deviceRepaired && (
-                        <span className="text-[10px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">
-                          {rev.deviceRepaired}
-                        </span>
-                      )}
+                  {/* Review Text */}
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic line-clamp-5">
+                    &ldquo;{rev.text}&rdquo;
+                  </p>
+
+                  {/* Device Repaired Badge */}
+                  {rev.deviceRepaired && (
+                    <div className="pt-1">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 text-[11px] font-semibold">
+                        <Wrench className="w-3 h-3 text-blue-600" />
+                        {rev.deviceRepaired}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Author Info */}
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 text-white font-bold text-xs flex items-center justify-center shadow-2xs">
+                      {rev.authorName ? rev.authorName.charAt(0).toUpperCase() : 'C'}
+                    </div>
+                    <div>
+                      <p className="font-bold text-slate-900">{rev.authorName}</p>
+                      {rev.location && <p className="text-[11px] text-slate-500">{rev.location}</p>}
                     </div>
                   </div>
-                ))}
+                  <span className="text-[10px] text-slate-400">{rev.date}</span>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="p-8 text-center bg-white rounded-2xl border border-slate-200">
-              <p className="text-sm text-slate-600">
-                Check our official ratings and submit your feedback directly on our Google Business Profile.
-              </p>
-              <a
-                href={SST_GOOGLE_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:underline"
-              >
-                <span>View SST CARE on Google Maps</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          )}
+            ))}
+          </div>
+
+          <div className="pt-3 flex items-center justify-between text-xs text-slate-500">
+            <span>👈 Swipe horizontally or use arrow buttons to explore reviews</span>
+            <a
+              href={settings.googleBusinessUrl || SST_GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex sm:hidden items-center gap-1 font-semibold text-blue-700"
+            >
+              <span>Google Reviews</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -431,10 +457,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ services, reviews, settings,
                   {/* Service Image */}
                   <div className="relative h-48 overflow-hidden bg-slate-900">
                     <img
-                      src={s.image || '/images/hero-technician.jpg'}
+                      src={getServiceImage(s)}
                       alt={s.name}
                       className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/images/hero-technician.jpg';
+                      }}
                     />
                     <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-xs text-[11px] font-semibold text-white border border-white/10">
                       {priceDisplay}
@@ -594,130 +623,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ services, reviews, settings,
             <h3 className="text-xs font-bold text-slate-900">Gaming Laptops</h3>
             <p className="text-[11px] text-slate-500 mt-1">ROG, Legion, Alienware, Predator</p>
           </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------------- */}
-      {/* SECTION: VERIFIED CUSTOMER REVIEWS (HORIZONTAL SCROLL)     */}
-      {/* ---------------------------------------------------------- */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold mb-2">
-              <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-              <span>4.9 / 5.0 Star Rated on Google</span>
-              <span className="text-amber-300">·</span>
-              <span>100% Genuine Visits</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b192c] tracking-tight">
-              Customer Reviews &amp; Feedback
-            </h2>
-            <p className="text-sm text-slate-600 mt-2 max-w-2xl leading-relaxed">
-              Read real doorstep repair stories from customers across Bandra, Andheri, Powai, Kurla, Chembur, and Mumbai.
-            </p>
-          </div>
-
-          {/* Navigation Scroll Buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                const el = document.getElementById('reviews-horizontal-container');
-                if (el) el.scrollBy({ left: -360, behavior: 'smooth' });
-              }}
-              className="p-3 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
-              aria-label="Scroll reviews left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => {
-                const el = document.getElementById('reviews-horizontal-container');
-                if (el) el.scrollBy({ left: 360, behavior: 'smooth' });
-              }}
-              className="p-3 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
-              aria-label="Scroll reviews right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Horizontal Scroll Track */}
-        <div
-          id="reviews-horizontal-container"
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 scroll-smooth snap-x snap-mandatory cursor-grab active:cursor-grabbing"
-          style={{ scrollbarWidth: 'thin' }}
-        >
-          {homeReviews.map((rev) => (
-            <div
-              key={rev.id}
-              className="w-[300px] sm:w-[360px] md:w-[400px] shrink-0 snap-start bg-white rounded-2xl p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                {/* Rating & Verified Tag */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1">
-                    {[...Array(rev.rating || 5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  {rev.isVerified && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Verified Visit
-                    </span>
-                  )}
-                </div>
-
-                {/* Review Text */}
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic line-clamp-5">
-                  &ldquo;{rev.text}&rdquo;
-                </p>
-
-                {/* Device Repaired Badge */}
-                {rev.deviceRepaired && (
-                  <div className="pt-1">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 text-[11px] font-semibold">
-                      <Wrench className="w-3 h-3 text-blue-600" />
-                      {rev.deviceRepaired}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Author & Location */}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 text-white font-bold text-xs flex items-center justify-center shadow-2xs">
-                    {rev.authorName ? rev.authorName.charAt(0).toUpperCase() : 'C'}
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">{rev.authorName}</h4>
-                    <p className="text-[11px] text-slate-500 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-slate-400" />
-                      {rev.location || 'Mumbai, Maharashtra'}
-                    </p>
-                  </div>
-                </div>
-
-                <span className="text-[10px] text-slate-400">{rev.date}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Direct Link to Google Business Profile */}
-        <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
-          <span>👈 Swipe horizontally or use arrow buttons to browse all reviews</span>
-          <a
-            href={settings.googleBusinessUrl || SST_GOOGLE_MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:text-blue-900 transition-colors"
-          >
-            <span>View all Google Reviews</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
         </div>
       </section>
 

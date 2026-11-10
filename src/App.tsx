@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ServiceItem, ReviewItem, BlogPost, SiteSettings } from './types';
-import { INITIAL_SERVICES } from './data/servicesData';
+import { INITIAL_SERVICES, getServiceImage } from './data/servicesData';
 import { INITIAL_REVIEWS } from './data/reviewsData';
 import { INITIAL_BLOG_POSTS } from './data/blogData';
 import { INITIAL_SETTINGS } from './data/settingsData';
@@ -35,10 +35,12 @@ export default function App() {
       const saved = localStorage.getItem('sstcare_services');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map(s => ({ ...s, image: getServiceImage(s) }));
+        }
       }
     } catch {}
-    return INITIAL_SERVICES;
+    return INITIAL_SERVICES.map(s => ({ ...s, image: getServiceImage(s) }));
   });
 
   const [reviews, setReviews] = useState<ReviewItem[]>(() => {
@@ -76,9 +78,10 @@ export default function App() {
 
   // State update handlers that sync to localStorage
   const handleUpdateServices = (newServices: ServiceItem[]) => {
-    setServices(newServices);
+    const withImages = newServices.map(s => ({ ...s, image: getServiceImage(s) }));
+    setServices(withImages);
     try {
-      localStorage.setItem('sstcare_services', JSON.stringify(newServices));
+      localStorage.setItem('sstcare_services', JSON.stringify(withImages));
     } catch {}
   };
 

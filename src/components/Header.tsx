@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 onClick={() => handleNavClick('/')}
                 className="cursor-pointer py-1"
               >
-                <BrandLogo height={44} variant="transparent" showTagline={true} />
+                <BrandLogo height={44} variant="transparent" showTagline={false} />
               </div>
             </div>
 

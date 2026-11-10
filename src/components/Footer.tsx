@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           {/* Brand Column (Span 2 on LG) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="bg-white/5 p-3 rounded-xl inline-block border border-white/10">
-              <BrandLogo height={42} variant="transparent" />
+              <BrandLogo height={42} isDarkBg={true} />
             </div>
             
             <p className="text-sm font-semibold text-white tracking-wide uppercase">
