@@ -58,6 +58,18 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   </button>
                 );
               })}
+
+              <button
+                onClick={() => handleNavClick('/admin')}
+                className={`relative py-1 px-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  currentPath.startsWith('/admin')
+                    ? 'bg-blue-700 text-white'
+                    : 'text-slate-500 hover:text-blue-700 bg-slate-100/80 hover:bg-slate-200/80'
+                }`}
+                title="Open Admin Console (No Password)"
+              >
+                Admin Panel
+              </button>
             </nav>
 
             {/* Zone 3: 1 Primary Action (WhatsApp Button) */}
@@ -172,6 +184,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   Contact & Location
                 </span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
+              </button>
+
+              <button
+                onClick={() => handleNavClick('/admin')}
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50/80 hover:bg-blue-100/80 border border-blue-200/60"
+              >
+                <span className="flex items-center gap-3">
+                  <Wrench className="w-4 h-4 text-blue-700" />
+                  Admin Console (Open Access)
+                </span>
+                <span className="text-[10px] uppercase font-extrabold bg-blue-600 text-white px-2 py-0.5 rounded-full">
+                  Admin
+                </span>
               </button>
             </div>
 

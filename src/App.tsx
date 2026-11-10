@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ServiceItem, ReviewItem, BlogPost, SiteSettings } from './types';
+import { INITIAL_SERVICES } from './data/servicesData';
+import { INITIAL_REVIEWS } from './data/reviewsData';
+import { INITIAL_BLOG_POSTS } from './data/blogData';
+import { INITIAL_SETTINGS } from './data/settingsData';
+
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -16,39 +21,86 @@ import { LegalView } from './views/LegalView';
 import { AdminView } from './views/AdminView';
 
 export default function App() {
-  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname || '/');
-  const [services, setServices] = useState<ServiceItem[]>([]);
-  const [reviews, setReviews] = useState<ReviewItem[]>([]);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [settings, setSettings] = useState<SiteSettings>({
-    brandName: "SST CARE",
-    tagline: "Professional Electronics Repair Service",
-    phone: "+91 79 7795 4302",
-    whatsapp: "+91 79 7795 4302",
-    email: "contact@sstcare.com",
-    websiteUrl: "https://www.sstcare.com",
-    googleBusinessUrl: "https://maps.app.goo.gl/RgC4ZUFohx93mFne8",
-    serviceCity: "Mumbai",
-    serviceState: "Maharashtra",
-    serviceAreas: [
-      "Andheri West & East",
-      "Bandra & Khar",
-      "Powai & Chandivali",
-      "Borivali & Kandivali",
-      "Dadar & Mahim",
-      "Goregaon & Malad",
-      "BKC & Kurla",
-      "Thane West",
-      "Navi Mumbai",
-      "South Mumbai"
-    ],
-    homepageSeoTitle: "Laptop, MacBook & Desktop Repair at Your Doorstep in Mumbai | SST CARE",
-    homepageSeoDescription: "Professional laptop repair, MacBook service and desktop computer repair at your home or office in Mumbai. Convenient doorstep visit & expert WhatsApp booking at +91 79 7795 4302.",
-    currency: "₹",
-    todaysOffer: "Todays Offer - Free Home Visit"
+  const [currentPath, setCurrentPath] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.pathname || '/';
+    }
+    return '/';
   });
 
-  const [loadingInitial, setLoadingInitial] = useState(true);
+  // Resilient initial states with instant local data and localStorage caching
+  const [services, setServices] = useState<ServiceItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('sstcare_services');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return INITIAL_SERVICES;
+  });
+
+  const [reviews, setReviews] = useState<ReviewItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('sstcare_reviews');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return INITIAL_REVIEWS;
+  });
+
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
+    try {
+      const saved = localStorage.getItem('sstcare_blog_posts');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return INITIAL_BLOG_POSTS;
+  });
+
+  const [settings, setSettings] = useState<SiteSettings>(() => {
+    try {
+      const saved = localStorage.getItem('sstcare_settings');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.brandName) return parsed;
+      }
+    } catch {}
+    return INITIAL_SETTINGS;
+  });
+
+  // State update handlers that sync to localStorage
+  const handleUpdateServices = (newServices: ServiceItem[]) => {
+    setServices(newServices);
+    try {
+      localStorage.setItem('sstcare_services', JSON.stringify(newServices));
+    } catch {}
+  };
+
+  const handleUpdateReviews = (newReviews: ReviewItem[]) => {
+    setReviews(newReviews);
+    try {
+      localStorage.setItem('sstcare_reviews', JSON.stringify(newReviews));
+    } catch {}
+  };
+
+  const handleUpdateBlogPosts = (newPosts: BlogPost[]) => {
+    setBlogPosts(newPosts);
+    try {
+      localStorage.setItem('sstcare_blog_posts', JSON.stringify(newPosts));
+    } catch {}
+  };
+
+  const handleUpdateSettings = (newSettings: SiteSettings) => {
+    setSettings(newSettings);
+    try {
+      localStorage.setItem('sstcare_settings', JSON.stringify(newSettings));
+    } catch {}
+  };
 
   // Sync with browser navigation
   useEffect(() => {
@@ -63,9 +115,11 @@ export default function App() {
     if (window.location.pathname !== path) {
       window.history.pushState({}, '', path);
       setCurrentPath(path);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
+  // Background API data sync (if backend server is reachable)
   const loadData = async () => {
     try {
       const [resServices, resReviews, resBlog, resSettings] = await Promise.allSettled([
@@ -75,22 +129,21 @@ export default function App() {
         fetch('/api/settings').then(r => r.json())
       ]);
 
-      if (resServices.status === 'fulfilled' && Array.isArray(resServices.value)) {
-        setServices(resServices.value);
+      if (resServices.status === 'fulfilled' && Array.isArray(resServices.value) && resServices.value.length > 0) {
+        handleUpdateServices(resServices.value);
       }
-      if (resReviews.status === 'fulfilled' && Array.isArray(resReviews.value)) {
-        setReviews(resReviews.value);
+      if (resReviews.status === 'fulfilled' && Array.isArray(resReviews.value) && resReviews.value.length > 0) {
+        handleUpdateReviews(resReviews.value);
       }
-      if (resBlog.status === 'fulfilled' && Array.isArray(resBlog.value)) {
-        setBlogPosts(resBlog.value);
+      if (resBlog.status === 'fulfilled' && Array.isArray(resBlog.value) && resBlog.value.length > 0) {
+        handleUpdateBlogPosts(resBlog.value);
       }
-      if (resSettings.status === 'fulfilled' && resSettings.value) {
-        setSettings(resSettings.value);
+      if (resSettings.status === 'fulfilled' && resSettings.value && resSettings.value.brandName) {
+        handleUpdateSettings(resSettings.value);
       }
     } catch (err) {
-      console.warn('Network fetch error, using local state:', err);
-    } finally {
-      setLoadingInitial(false);
+      // In static hosting environments like Vercel, offline static data remains seamlessly active
+      console.log('Background API sync not available, operating in resilient static mode');
     }
   };
 
@@ -119,7 +172,7 @@ export default function App() {
   const renderCurrentView = () => {
     const cleanPath = currentPath.replace(/\/+$/, '') || '/';
 
-    // Home
+    // 1. Home View
     if (cleanPath === '/') {
       return (
         <HomeView
@@ -131,7 +184,7 @@ export default function App() {
       );
     }
 
-    // All Services
+    // 2. All Services List (/services)
     if (cleanPath === '/services') {
       return (
         <ServicesListView
@@ -141,7 +194,7 @@ export default function App() {
       );
     }
 
-    // Individual Service (/services/:slug)
+    // 3. Individual Service (/services/:slug)
     if (cleanPath.startsWith('/services/')) {
       const slug = cleanPath.replace('/services/', '');
       const found = services.find(s => s.slug === slug || s.id === slug);
@@ -156,7 +209,7 @@ export default function App() {
       }
     }
 
-    // Blog list (/blog)
+    // 4. Blog list (/blog)
     if (cleanPath === '/blog') {
       return (
         <BlogListView
@@ -166,7 +219,7 @@ export default function App() {
       );
     }
 
-    // Blog Category (/blog/category/:category)
+    // 5. Blog Category (/blog/category/:category)
     if (cleanPath.startsWith('/blog/category/')) {
       const category = decodeURIComponent(cleanPath.replace('/blog/category/', ''));
       return (
@@ -178,7 +231,7 @@ export default function App() {
       );
     }
 
-    // Blog Tag (/blog/tag/:tag)
+    // 6. Blog Tag (/blog/tag/:tag)
     if (cleanPath.startsWith('/blog/tag/')) {
       const tag = decodeURIComponent(cleanPath.replace('/blog/tag/', ''));
       return (
@@ -190,10 +243,15 @@ export default function App() {
       );
     }
 
-    // Single Blog Post (/blog/:slug)
+    // 7. Single Blog Post via /blog/:slug
     if (cleanPath.startsWith('/blog/')) {
       const slug = cleanPath.replace('/blog/', '');
-      const post = blogPosts.find(p => p.slug === slug || p.id === slug);
+      const decodedSlug = decodeURIComponent(slug).toLowerCase();
+      const post = blogPosts.find(p => 
+        p.slug.toLowerCase() === slug.toLowerCase() || 
+        decodeURIComponent(p.slug).toLowerCase() === decodedSlug ||
+        p.id === slug
+      );
       if (post) {
         return (
           <BlogPostView
@@ -206,16 +264,17 @@ export default function App() {
       }
     }
 
-    // Check if the path matches an old migrated WordPress URL (e.g., /my-old-post/ or sample url)
+    // 8. Direct root slug for WordPress migrated URLs (e.g. /laptop-macbook-battery-replacement-in-kurla-mumbai-fast-affordable-service-sst-care)
     const rawSlug = cleanPath.replace(/^\//, '');
-    const decodedRawSlug = decodeURIComponent(rawSlug);
+    const decodedRawSlug = decodeURIComponent(rawSlug).toLowerCase();
     const migratedPost = blogPosts.find(p => {
-      const pSlug = p.slug;
-      const decodedPSlug = decodeURIComponent(p.slug);
-      return pSlug === rawSlug || 
+      const pSlug = p.slug.toLowerCase();
+      const decodedPSlug = decodeURIComponent(p.slug).toLowerCase();
+      return pSlug === rawSlug.toLowerCase() || 
              pSlug === decodedRawSlug || 
              decodedPSlug === decodedRawSlug ||
-             p.id === rawSlug;
+             p.id === rawSlug ||
+             (p.originalWordPressUrl && decodeURIComponent(p.originalWordPressUrl).toLowerCase().includes(decodedRawSlug));
     });
     if (migratedPost) {
       return (
@@ -228,17 +287,17 @@ export default function App() {
       );
     }
 
-    // About Us
+    // 9. About Us
     if (cleanPath === '/about-us') {
       return <AboutView navigate={navigate} />;
     }
 
-    // Contact Us
+    // 10. Contact Us
     if (cleanPath === '/contact-us') {
       return <ContactView settings={settings} navigate={navigate} />;
     }
 
-    // Legal Pages
+    // 11. Legal Pages
     if (cleanPath === '/privacy-policy') {
       return <LegalView type="privacy" navigate={navigate} />;
     }
@@ -252,8 +311,15 @@ export default function App() {
       return <LegalView type="service" navigate={navigate} />;
     }
 
-    // Admin Routes
-    if (cleanPath === '/admin') {
+    // 12. Admin Console Routes (Accessible instantly without passwords or credentials)
+    if (cleanPath === '/admin' || cleanPath.startsWith('/admin')) {
+      let subSection = 'dashboard';
+      if (cleanPath.startsWith('/admin/services')) subSection = 'services';
+      else if (cleanPath.startsWith('/admin/reviews')) subSection = 'reviews';
+      else if (cleanPath.startsWith('/admin/blog')) subSection = 'blog';
+      else if (cleanPath.startsWith('/admin/settings')) subSection = 'settings';
+      else if (cleanPath.startsWith('/admin/migration')) subSection = 'migration';
+
       return (
         <AdminView
           services={services}
@@ -262,77 +328,16 @@ export default function App() {
           settings={settings}
           onRefreshData={loadData}
           navigate={navigate}
-          subSection="dashboard"
-        />
-      );
-    }
-    if (cleanPath === '/admin/services') {
-      return (
-        <AdminView
-          services={services}
-          reviews={reviews}
-          blogPosts={blogPosts}
-          settings={settings}
-          onRefreshData={loadData}
-          navigate={navigate}
-          subSection="services"
-        />
-      );
-    }
-    if (cleanPath === '/admin/reviews') {
-      return (
-        <AdminView
-          services={services}
-          reviews={reviews}
-          blogPosts={blogPosts}
-          settings={settings}
-          onRefreshData={loadData}
-          navigate={navigate}
-          subSection="reviews"
-        />
-      );
-    }
-    if (cleanPath === '/admin/blog') {
-      return (
-        <AdminView
-          services={services}
-          reviews={reviews}
-          blogPosts={blogPosts}
-          settings={settings}
-          onRefreshData={loadData}
-          navigate={navigate}
-          subSection="blog"
-        />
-      );
-    }
-    if (cleanPath === '/admin/settings') {
-      return (
-        <AdminView
-          services={services}
-          reviews={reviews}
-          blogPosts={blogPosts}
-          settings={settings}
-          onRefreshData={loadData}
-          navigate={navigate}
-          subSection="settings"
-        />
-      );
-    }
-    if (cleanPath === '/admin/migration') {
-      return (
-        <AdminView
-          services={services}
-          reviews={reviews}
-          blogPosts={blogPosts}
-          settings={settings}
-          onRefreshData={loadData}
-          navigate={navigate}
-          subSection="migration"
+          subSection={subSection}
+          onUpdateServices={handleUpdateServices}
+          onUpdateReviews={handleUpdateReviews}
+          onUpdateBlogPosts={handleUpdateBlogPosts}
+          onUpdateSettings={handleUpdateSettings}
         />
       );
     }
 
-    // 404 Fallback
+    // 13. 404 Fallback
     return (
       <div className="max-w-xl mx-auto py-20 px-4 text-center space-y-4">
         <h1 className="text-4xl font-extrabold text-[#0b192c]">404 — Page Not Found</h1>
@@ -342,15 +347,15 @@ export default function App() {
         <div className="pt-2 flex justify-center gap-3">
           <button
             onClick={() => navigate('/')}
-            className="px-5 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold"
+            className="px-5 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold cursor-pointer"
           >
             Go to Homepage
           </button>
           <button
-            onClick={() => navigate('/services')}
-            className="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-800 text-xs font-semibold"
+            onClick={() => navigate('/blog')}
+            className="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-800 text-xs font-semibold cursor-pointer"
           >
-            Explore Services
+            View Technical Blog
           </button>
         </div>
       </div>
@@ -364,7 +369,7 @@ export default function App() {
       {/* 1.5s - 2.0s Brand Loading Animation (on first visit) */}
       <LoadingAnimation />
 
-      {/* Sticky Header with Top Bar Contract */}
+      {/* Sticky Header with Brand Navigation */}
       <Header currentPath={currentPath} navigate={navigate} />
 
       {/* Main Content View */}

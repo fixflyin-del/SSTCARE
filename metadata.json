@@ -2,5 +2,7 @@
   "name": "SST CARE — Laptop, MacBook & Desktop Repair in Mumbai",
   "description": "Professional laptop, MacBook and desktop electronics repair service with doorstep visits across Mumbai. Expert WhatsApp booking at +91 79 7795 4302.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
