@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     <>
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 sm:gap-8 h-18 sm:h-20">
+          <div className="flex items-center justify-between gap-3 sm:gap-8 h-20 sm:h-24">
             {/* Zone 1: Left-side Hamburger Button & Brand Logo */}
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Mobile Hamburger Toggle on LEFT side of Logo */}
@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 onClick={() => handleNavClick('/')}
                 className="cursor-pointer py-1 flex items-center"
               >
-                <BrandLogo height={50} />
+                <BrandLogo imgClassName="h-16 sm:h-20 w-auto" />
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           {/* Drawer content on LEFT */}
           <div className="relative bg-white w-80 max-w-[85vw] h-full overflow-y-auto shadow-2xl p-6 flex flex-col z-10 animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <BrandLogo height={44} />
+              <BrandLogo height={56} />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 cursor-pointer"
