@@ -61,8 +61,8 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           {/* Brand Column (Span 2 on LG) */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white/5 p-3 rounded-xl inline-block border border-white/10">
-              <BrandLogo height={42} isDarkBg={true} />
+            <div className="inline-block">
+              <BrandLogo height={60} isDarkBg={true} />
             </div>
             
             <p className="text-sm font-semibold text-white tracking-wide uppercase">

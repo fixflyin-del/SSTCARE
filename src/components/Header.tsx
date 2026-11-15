@@ -44,9 +44,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               {/* Brand Logo */}
               <div 
                 onClick={() => handleNavClick('/')}
-                className="cursor-pointer py-1"
+                className="cursor-pointer py-1 flex items-center"
               >
-                <BrandLogo height={44} variant="transparent" showTagline={false} />
+                <BrandLogo height={50} />
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           {/* Drawer content on LEFT */}
           <div className="relative bg-white w-80 max-w-[85vw] h-full overflow-y-auto shadow-2xl p-6 flex flex-col z-10 animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <BrandLogo height={38} variant="transparent" />
+              <BrandLogo height={44} />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 cursor-pointer"
